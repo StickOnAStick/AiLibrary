@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdint.h": "c",
+        "layer.h": "c",
+        "math.h": "c",
+        "stdio.h": "c"
+    }
+}
