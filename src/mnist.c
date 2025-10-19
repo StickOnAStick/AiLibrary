@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-float** load_mnist_images(
+float** mnist_load_images(
     const char* filename, 
     uint32_t *count, 
     uint32_t *rows, 
@@ -36,7 +36,7 @@ float** load_mnist_images(
     return images;
 }
 
-uint8_t* load_mnist_labels(const char *filename, uint32_t *count) {
+uint8_t* mnist_load_labels(const char *filename, uint32_t *count) {
     FILE* f = fopen(filename, "rb");
     if (!f) { perror("open imeages"); exit(1); }
 
