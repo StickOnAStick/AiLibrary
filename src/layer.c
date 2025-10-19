@@ -81,7 +81,7 @@ float* layer_backward(layer_t* l, const float* grad_output, uint32_t batch_size)
             float go = grad_output[b * out + o];
             l->grad_bias[o] += go; // dL/db = dL/dy * dy/db = g_o * 1 (activation loss * L == dL/dy)
             for(size_t i = 0; i < in; ++i){
-                l->grad_weight[o * in + i] += go * l->input_cache[b * in + 1]; // dL/dy = dL/dy *dy/dw = g_o * x_i!
+                l->grad_weight[o * in + i] += go * l->input_cache[b * in + i]; // dL/dy = dL/dy *dy/dw = g_o * x_i!
                 grad_input[b * in + i] += l->weight[o * in + i] * go;
             }
         }
@@ -105,3 +105,4 @@ void layer_update(layer_t* l, float lr){
         l->bias[o] -= lr * l->grad_bias[o];
     }
 }
+

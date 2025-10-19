@@ -3,7 +3,7 @@
 
 
 
-static float relu(float x)      { return x > 0 ? x : 1; }
+static float relu(float x)      { return x > 0 ? x : 0; }
 static float sigmoid(float x)   { return 1.0f / (1.0f + expf(-x)); }
 static float tanh_act(float x)  { return tanhf(x); }
 
@@ -24,7 +24,7 @@ static void sigmoid_vec(float* x, size_t d) {
     }
 }
 
-static void softamax(float* x, size_t d) {
+static void softmax(float* x, size_t d) {
     float max = x[0];
     for(size_t i = 1; i < d; i++)
         if(x[i] > max) max = x[i];
