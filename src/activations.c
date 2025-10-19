@@ -1,18 +1,19 @@
 #include <stdint.h>
 #include <math.h>
+#include <stddef.h>
+#include "activations.h"
 
+float relu(float x)      { return x > 0 ? x : 0; }
+float sigmoid(float x)   { return 1.0f / (1.0f + expf(-x)); }
+float tanh_act(float x)  { return tanhf(x); }
 
-
-static float relu(float x)      { return x > 0 ? x : 0; }
-static float sigmoid(float x)   { return 1.0f / (1.0f + expf(-x)); }
-static float tanh_act(float x)  { return tanhf(x); }
-
-static void relu_vec(float* x, size_t d) {
+void relu_vec(float* x, size_t d) {
     for(size_t i = 0; i < d; i++){
         x[i] = x[i] > 0 ? x[i] : 0;
     }
 }
-static void sigmoid_vec(float* x, size_t d) {
+
+void sigmoid_vec(float* x, size_t d) {
     for (size_t i = 0; i < d; i++) {
         if (x[i] >= 0) {
             float z = expf(-x[i]);
@@ -24,7 +25,7 @@ static void sigmoid_vec(float* x, size_t d) {
     }
 }
 
-static void softmax(float* x, size_t d) {
+void softmax(float* x, size_t d) {
     float max = x[0];
     for(size_t i = 1; i < d; i++)
         if(x[i] > max) max = x[i];

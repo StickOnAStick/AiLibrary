@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include <stdlib.h> // rand
-
+#include <stddef.h>
 
 typedef struct {
     size_t in_features;

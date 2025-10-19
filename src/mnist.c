@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stddef.h>
+#include "mnist.h"
 
 float** mnist_load_images(
     const char* filename, 
@@ -9,7 +11,7 @@ float** mnist_load_images(
     uint32_t *rows, 
     uint32_t *cols
 ){
-    FILE *f = fopen(filename, 'rb');
+    FILE *f = fopen(filename, "rb");
     if (!f) { perror("open imeages"); exit(1); }
 
     uint32_t magic = read_uint32_be(f);

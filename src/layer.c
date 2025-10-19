@@ -1,5 +1,7 @@
 #include <layer.h>
 #include <math.h>
+#include <stddef.h>
+#include <string.h>
 
 
 layer_t* layer_init(size_t d_i, size_t d_o) {
@@ -94,7 +96,7 @@ float* layer_backward(layer_t* l, const float* grad_output, uint32_t batch_size)
             l->grad_weight[o * in + i] /= batch_size;
     }
 
-    return grad_output;
+    return grad_input;
 }
 
 void layer_update(layer_t* l, float lr){
