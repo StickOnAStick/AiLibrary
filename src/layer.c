@@ -87,7 +87,7 @@ float* layer_backward(layer_t* l, const float* grad_output, uint32_t batch_size)
         }
     }
 
-    // averaget he gradients
+    // average the gradients
     for(size_t o = 0; o < out; ++o){
         l->grad_bias[o] /= batch_size;
         for(size_t i = 0; i < in; i++)
