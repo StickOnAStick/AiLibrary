@@ -43,7 +43,7 @@ uint8_t* mnist_load_labels(const char *filename, uint32_t *count) {
     if (!f) { perror("open imeages"); exit(1); }
 
     uint32_t magic = read_uint32_be(f);
-    if(magic != 2051){
+    if(magic != 2049){
         fprintf(stderr, "Invalid magic number %u for images\n", magic);
         exit(1);
     }
